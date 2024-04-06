@@ -315,7 +315,7 @@ const updateUserCoverImage = asyncHandler(async(req,res) =>{
     )
 })
 
-const userChannelProfile = asyncHandler(async(req,res) =>{
+const getuserChannelProfile = asyncHandler(async(req,res) =>{
     const { username } = req.params;
     
     if(!username.trim()){
@@ -398,7 +398,7 @@ const getWatchHistory = asyncHandler(async(req,res) =>{
                         from:"users",
                         localField:"owner",
                         foreignField:"_id",
-                        as:"owner".
+                        as:"owner",
                         pipeline: [ {
                             $project: {
                               fullName: 1,
@@ -406,8 +406,7 @@ const getWatchHistory = asyncHandler(async(req,res) =>{
                                 avatar: 1
 
 
-                            }}
-                        ]
+                            }}]
                     }
                 },
                 {
@@ -440,6 +439,6 @@ export {
      updateAccountDetails,
      updateUserAvatar,
      updateUserCoverImage,
-     userChannelProfile,
+     getuserChannelProfile,
      getWatchHistory
     };
